@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Info Portal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header Styling */
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        header h1 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive Navigation Bar */
+        nav {
+            background-color: #444;
+            position: sticky;
+            top: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            transition: background-color 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        /* Centered Content Section */
+        main {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        main h2 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        /* Footer with Light Gray Background */
+        footer {
+            background-color: #d3d3d3;
+            text-align:center;
+            padding: 1.5rem;
+            margin-top: 13.5rem;
+        }
+
+        footer p {
+            margin: 0.3rem 0;
+            color: #333;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li a {
+                padding: 0.8rem;
+            }
+
+            main {
+                padding: 1rem;
+                margin: 2rem auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <h1>Student Info Portal</h1>
+        <p>Welcome to the Student Information Management System</p>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#students">Students</a></li>
+            <li><a href="#courses">Courses</a></li>
+            <li><a href="#grades">Grades</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Section -->
+    <main>
+        <h2>Dashboard</h2>
+        <p>Access student records, course information, and academic performance data.</p>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Student Info Portal. All rights reserved.</p>
+        <p>Contact: info@studentportal.edu</p>
+    </footer>
+</body>
+</html>
