@@ -1,0 +1,4 @@
+{"timestamp": "2025-11-25 22:43:25", "city": "Gaya", "temperature_c": 12.95, "humidity_percent": 82, "description": "Mist"}
+{"timestamp": "2025-11-25 22:44:21", "city": "Delhi", "temperature_c": 15.05, "humidity_percent": 67, "description": "Haze"}
+{"timestamp": "2025-11-25 22:44:37", "city": "Mumbai", "temperature_c": 28.99, "humidity_percent": 61, "description": "Haze"}
+{"timestamp": "2025-11-25 22:44:57", "city": "Patna", "temperature_c": 16.96, "humidity_percent": 72, "description": "Mist"}

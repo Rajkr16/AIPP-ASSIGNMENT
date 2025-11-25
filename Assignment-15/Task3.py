@@ -1,0 +1,77 @@
+import requests
+
+API_KEY = "cac0fc82fb3e06f734c8d6e8db3284d8"
+BASE_URL = "http://api.openweathermap.org/data/2.5/weather"
+
+def get_weather(city: str):
+    params = {
+        "q": city,
+        "appid": API_KEY,
+        "units": "metric"
+    }
+    try:
+        response = requests.get(BASE_URL, params=params, timeout=8)
+    except requests.exceptions.InvalidURL:
+        print("Error: The weather service URL is invalid.")
+        return None
+    except requests.exceptions.Timeout:
+        print("Error: The request timed out. Please try again later.")
+        return None
+    except requests.exceptions.ConnectionError:
+        print("Error: Network problem. Check your internet connection.")
+        return None
+    except requests.exceptions.RequestException as e:
+        print(f"Error: An unexpected request error occurred: {e}")
+        return None
+
+    if response.status_code == 401:
+        print("Error: Unauthorized. Check the API key.")
+        return None
+    if response.status_code == 404:
+        print("Error: City not found.")
+        return None
+    if response.status_code >= 500:
+        print("Error: Weather service unavailable. Try again later.")
+        return None
+    if response.status_code != 200:
+        print(f"Error: Unexpected status code {response.status_code}.")
+        return None
+
+    try:
+        weather_data = response.json()
+    except ValueError:
+        print("Error: Failed to decode response JSON.")
+        return None
+
+    cod = str(weather_data.get("cod"))
+    if cod != "200":
+        print(f"Error: {weather_data.get('message', 'Unknown API error.')}")
+        return None
+
+    name = weather_data.get("name", city)
+    main = weather_data.get("main", {})
+    temp = main.get("temp")
+    humidity = main.get("humidity")
+    weather_list = weather_data.get("weather", [])
+    description = (weather_list[0].get("description") if weather_list else None)
+
+    if temp is None or humidity is None or description is None:
+        print("Error: Missing expected weather fields.")
+        return None
+
+    description = description.capitalize()
+    print(f"City: {name}\nTemperature: {temp}°C\nHumidity: {humidity}%\nWeather: {description}")
+
+    return {
+        "city": name,
+        "temperature_c": temp,
+        "humidity_percent": humidity,
+        "description": description
+    }
+
+if __name__ == "__main__":
+    city_name = input("Enter city name: ").strip()
+    if city_name:
+        get_weather(city_name)
+    else:
+        print("Error: City name cannot be empty.")
